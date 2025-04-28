@@ -15,7 +15,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     header {
       background-color: #0056b3;
       color: white;
@@ -23,7 +22,6 @@
       text-align: center;
       width: 100%;
     }
-
     .container {
       max-width: 600px;
       background: white;
@@ -33,7 +31,6 @@
       border-radius: 15px;
       text-align: center;
     }
-
     input, button {
       padding: 12px;
       margin: 10px;
@@ -42,17 +39,14 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
-
     button {
       background-color: #0056b3;
       color: white;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #003d80;
     }
-
     #ticket {
       display: none;
       background: linear-gradient(135deg, #ffe066, #fab005);
@@ -64,24 +58,20 @@
       text-align: center;
       box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     }
-
     #ticket h2 {
       margin-top: 0;
       font-size: 24px;
     }
-
     #ticket p {
       margin: 10px 0;
       font-size: 16px;
     }
-
     footer {
       margin-top: 50px;
       font-size: 12px;
       color: #666;
       text-align: center;
     }
-
     .instrucciones {
       text-align: left;
       font-size: 14px;
@@ -117,6 +107,7 @@
     <h2>🎟️ Ticket de Lectura</h2>
     <p id="nombreEstudiante"></p>
     <p id="codigoUnico"></p>
+    <p id="fechaLectura"></p>
     <p>«Leer te abre caminos» 📖✨</p>
   </div>
 
@@ -169,8 +160,15 @@ function verificar() {
   }
 
   if(estudiantes[registro]){
+    const fechaHoy = new Date();
+    const dia = String(fechaHoy.getDate()).padStart(2, '0');
+    const mes = String(fechaHoy.getMonth() + 1).padStart(2, '0');
+    const año = fechaHoy.getFullYear();
+    const fechaFormateada = `${dia}/${mes}/${año}`;
+
     document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + estudiantes[registro].nombre + "</strong>";
     document.getElementById("codigoUnico").innerHTML = "Registro: <strong>" + registro + "</strong>";
+    document.getElementById("fechaLectura").innerHTML = "📅 Lectura 1 - " + fechaFormateada;
     document.getElementById("ticket").style.display = "block";
     document.getElementById("btnDescargar").style.display = "inline-block";
   }else{
