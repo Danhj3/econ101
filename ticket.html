@@ -60,10 +60,9 @@
       padding: 20px;
       border-radius: 15px;
       margin-top: 30px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-      position: relative;
     }
 
     #ticket h2 {
@@ -130,30 +129,31 @@
 
 <script>
 const estudiantes = {
-  "225079951": {nombre: "Sergio Rodrigo Burcio Gonzales", codigo: "TICKET-LECTURA-2025-1"},
-  "22507070": {nombre: "Queysi Jahaziel Añez Aguilar", codigo: "TICKET-LECTURA-2025-2"},
-  "20018791": {nombre: "Jose Perez Ricaldes", codigo: "TICKET-LECTURA-2025-3"},
-  "225415832": {nombre: "Luz Marieli Arias Carrillo", codigo: "TICKET-LECTURA-2025-4"},
-  "225132486": {nombre: "Jher Mathias Gorena Hurtado", codigo: "TICKET-LECTURA-2025-5"},
-  "225133221": {nombre: "Hilda Arispe Gonzáles", codigo: "TICKET-LECTURA-2025-6"},
-  "225416650": {nombre: "Karla Paiss Ortiz Paz", codigo: "TICKET-LECTURA-2025-7"},
-  "225086621": {nombre: "Maria Belen Serna Claros", codigo: "TICKET-LECTURA-2025-8"},
-  "225136361": {nombre: "Nicol Adrianz Pacheco", codigo: "TICKET-LECTURA-2025-9"},
-  "225135323": {nombre: "Eva Maria Medina Melgar", codigo: "TICKET-LECTURA-2025-10"},
-  "225082799": {nombre: "Sarai Michel Gutierrez Ubano", codigo: "TICKET-LECTURA-2025-11"},
-  "225085661": {nombre: "Julio Daniel Rivera", codigo: "TICKET-LECTURA-2025-12"},
-  "225136810": {nombre: "Bruno Cadima", codigo: "TICKET-LECTURA-2025-13"},
-  "225084274": {nombre: "Fabian Montecinos Rioja", codigo: "TICKET-LECTURA-2025-14"},
-  "225167960": {nombre: "Mady Rico Sanchez", codigo: "TICKET-LECTURA-2025-15"},
-  "225154641": {nombre: "Luis Miguel Pasteur Ortega", codigo: "TICKET-LECTURA-2025-16"},
-  "22516944": {nombre: "Sara Valverde Llanos", codigo: "TICKET-LECTURA-2025-17"},
-  "22515980": {nombre: "Mauricio Cespedes Acosta", codigo: "TICKET-LECTURA-2025-18"},
-  "225132699": {nombre: "Jose Miguel Perez Arteaga", codigo: "TICKET-LECTURA-2025-19"},
-  "225085321": {nombre: "Luis Ramiro Quiroga Zanga", codigo: "TICKET-LECTURA-2025-20"},
-  "219132429": {nombre: "Mariana Martins Bejarano", codigo: "TICKET-LECTURA-2025-21"},
-  "220076091": {nombre: "Alejandro Elias Paz Roda", codigo: "TICKET-LECTURA-2025-22"},
-  "22416316": {nombre: "Reinaldo Hurtado Saria", codigo: "TICKET-LECTURA-2025-23"},
-  "7696852": {nombre: "Daniel Hurtado Justiniano", codigo: "TICKET-LECTURA-2025-24"}
+  "225079951": {nombre: "Sergio Rodrigo Burcio Gonzales"},
+  "22507070": {nombre: "Queysi Jahaziel Añez Aguilar"},
+  "20018791": {nombre: "Jose Perez Ricaldes"},
+  "225415832": {nombre: "Luz Marieli Arias Carrillo"},
+  "225132486": {nombre: "Jher Mathias Gorena Hurtado"},
+  "225133221": {nombre: "Hilda Arispe Gonzáles"},
+  "225416650": {nombre: "Karla Paiss Ortiz Paz"},
+  "225086621": {nombre: "Maria Belen Serna Claros"},
+  "225136361": {nombre: "Nicol Adrianz Pacheco"},
+  "225135323": {nombre: "Eva Maria Medina Melgar"},
+  "225082799": {nombre: "Sarai Michel Gutierrez Ubano"},
+  "225085661": {nombre: "Julio Daniel Rivera"},
+  "225136810": {nombre: "Bruno Cadima"},
+  "225084274": {nombre: "Fabian Montecinos Rioja"},
+  "225167960": {nombre: "Mady Rico Sanchez"},
+  "225154641": {nombre: "Luis Miguel Pasteur Ortega"},
+  "22516944": {nombre: "Sara Valverde Llanos"},
+  "22515980": {nombre: "Mauricio Cespedes Acosta"},
+  "225132699": {nombre: "Jose Miguel Perez Arteaga"},
+  "225085321": {nombre: "Luis Ramiro Quiroga Zanga"},
+  "219132429": {nombre: "Mariana Martins Bejarano"},
+  "220076091": {nombre: "Alejandro Elias Paz Roda"},
+  "22416316": {nombre: "Reinaldo Hurtado Saria"},
+  "7696852": {nombre: "Daniel Hurtado Justiniano"},
+  "11304518": {nombre: "Jennifer Arredondo Villagómez"}
 };
 
 let descargado = false;
@@ -170,7 +170,7 @@ function verificar() {
 
   if(estudiantes[registro]){
     document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + estudiantes[registro].nombre + "</strong>";
-    document.getElementById("codigoUnico").innerHTML = "Código: <strong>" + estudiantes[registro].codigo + "</strong>";
+    document.getElementById("codigoUnico").innerHTML = "Registro: <strong>" + registro + "</strong>";
     document.getElementById("ticket").style.display = "block";
     document.getElementById("btnDescargar").style.display = "inline-block";
   }else{
