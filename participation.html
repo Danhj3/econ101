@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎟️ Ticket de Participación 2025</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      background-color: #0056b3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      margin-top: 30px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      text-align: center;
+    }
+    input, button {
+      padding: 12px;
+      margin: 10px;
+      font-size: 16px;
+      width: 80%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #0056b3;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003d80;
+    }
+    #ticket {
+      display: none;
+      background: linear-gradient(135deg, #ffe066, #fab005);
+      color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 30px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+    #ticket h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+    #ticket p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+    .instrucciones {
+      text-align: left;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎓 Sistema de Tickets de Participación 2025</h1>
+  <p>Universidad | Proyecto Académico</p>
+</header>
+
+<div class="container">
+  <h2>🎯 Bienvenido(a)</h2>
+  <p>Por favor sigue los pasos para descargar tu ticket de participación:</p>
+
+  <div class="instrucciones">
+    <ol>
+      <li>Ingresa tu número de registro asignado.</li>
+      <li>Máximo 3 tickets por persona.</li>
+    </ol>
+  </div>
+
+  <input type="text" id="registro" placeholder="Ej: 225079951">
+  <br>
+  <button onclick="verificar()">Verificar y Mostrar Ticket</button>
+
+  <div id="ticket">
+    <h2>🎟️ Ticket de Participación</h2>
+    <p id="nombreEstudiante"></p>
+    <p id="codigoUnico"></p>
+    <p id="fechaParticipacion"></p>
+    <p>«Tu participación fortalece el conocimiento» 📚✨</p>
+  </div>
+
+  <button id="btnDescargar" onclick="descargar()" style="display:none; margin-top:20px;">Descargar Ticket como Imagen</button>
+</div>
+
+<footer>
+  © 2025 Daniel Hurtado Justiniano - Todos los derechos reservados
+</footer>
+
+<script>
+const estudiantes = {
+  "225079951": {nombre: "Sergio Rodrigo Burcio Gonzales"},
+  "22507070": {nombre: "Queysi Jahaziel Añez Aguilar"},
+  "20018791": {nombre: "Jose Perez Ricaldes"},
+  "225415832": {nombre: "Luz Marieli Arias Carrillo"},
+  "225132486": {nombre: "Jher Mathias Gorena Hurtado"},
+  "225133221": {nombre: "Hilda Arispe Gonzáles"},
+  "225416650": {nombre: "Karla Paiss Ortiz Paz"},
+  "225086621": {nombre: "Maria Belen Serna Claros"},
+  "225136361": {nombre: "Nicol Adrianz Pacheco"},
+  "225135323": {nombre: "Eva Maria Medina Melgar"},
+  "225082799": {nombre: "Sarai Michel Gutierrez Ubano"},
+  "225085661": {nombre: "Julio Daniel Rivera"},
+  "225136810": {nombre: "Bruno Cadima"},
+  "225084274": {nombre: "Fabian Montecinos Rioja"},
+  "225167960": {nombre: "Mady Rico Sanchez"},
+  "225154641": {nombre: "Luis Miguel Pasteur Ortega"},
+  "22516944": {nombre: "Sara Valverde Llanos"},
+  "22515980": {nombre: "Mauricio Cespedes Acosta"},
+  "225132699": {nombre: "Jose Miguel Perez Arteaga"},
+  "225085321": {nombre: "Luis Ramiro Quiroga Zanga"},
+  "219132429": {nombre: "Mariana Martins Bejarano"},
+  "220076091": {nombre: "Alejandro Elias Paz Roda"},
+  "22416316": {nombre: "Reinaldo Hurtado Saria"},
+  "7696852": {nombre: "Daniel Hurtado Justiniano"},
+  "11304518": {nombre: "Jennifer Arredondo Villagómez"}
+};
+
+let descargados = {};
+
+function verificar() {
+  let registro = document.getElementById("registro").value.trim();
+  let base = registro.replace(/[ab]$/, '');
+
+  if (estudiantes[base]) {
+    let fechaHoy = new Date();
+    let dia = String(fechaHoy.getDate()).padStart(2, '0');
+    let mes = String(fechaHoy.getMonth() + 1).padStart(2, '0');
+    let año = fechaHoy.getFullYear();
+    let fechaFormateada = `${dia}/${mes}/${año}`;
+
+    let intento = 1;
+    if (registro.endsWith('a')) intento = 2;
+    else if (registro.endsWith('b')) intento = 3;
+
+    if (intento > 3) {
+      alert("⛔ Solo puedes descargar tres tickets.");
+      return;
+    }
+
+    if (!descargados[registro]) {
+      document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + estudiantes[base].nombre + "</strong>";
+      document.getElementById("codigoUnico").innerHTML = "Registro: <strong>" + base + "</strong>";
+      document.getElementById("fechaParticipacion").innerHTML = "🎯 Participación - " + fechaFormateada + " (Intento " + intento + ")";
+      document.getElementById("ticket").style.display = "block";
+      document.getElementById("btnDescargar").style.display = "inline-block";
+    } else {
+      alert("⚠️ Este ticket ya fue descargado.");
+      document.getElementById("ticket").style.display = "none";
+      document.getElementById("btnDescargar").style.display = "none";
+    }
+  } else {
+    alert("❌ Registro incorrecto. Verifica tu número.");
+    document.getElementById("ticket").style.display = "none";
+    document.getElementById("btnDescargar").style.display = "none";
+  }
+}
+
+function descargar() {
+  let registro = document.getElementById("registro").value.trim();
+  if (descargados[registro]) {
+    alert("⚠️ Ya descargaste este ticket.");
+    return;
+  }
+  html2canvas(document.getElementById("ticket")).then(function(canvas) {
+    let link = document.createElement("a");
+    link.download = "Ticket_Participacion_2025.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+    descargados[registro] = true;
+  });
+}
+</script>
+
+</body>
+</html>
