@@ -3,33 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ticket de Lectura 2025</title>
+  <title>🎟️ Ticket de Lectura 2025</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; background-color: #f0f4f8; display: flex; flex-direction: column; align-items: center; padding: 50px; }
-    input, button { padding: 10px; margin: 10px; font-size: 16px; }
-    .ticket {
-      display: none; background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-      width: 320px; text-align: center; margin-top: 30px;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .ticket h2, .ticket p { margin: 10px 0; }
+
+    header {
+      background-color: #0056b3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      margin-top: 30px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    input, button {
+      padding: 12px;
+      margin: 10px;
+      font-size: 16px;
+      width: 80%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #0056b3;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #003d80;
+    }
+
+    #ticket {
+      display: none;
+      background: linear-gradient(135deg, #ffe066, #fab005);
+      color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 30px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    #ticket h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    #ticket p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+
+    .instrucciones {
+      text-align: left;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
 
-<h2>🎟️ Descarga tu Ticket de Lectura 2025</h2>
-<p>Ingresa tu número de registro asignado:</p>
-<input type="text" id="registro" placeholder="Ej: 225079951">
-<br>
-<button onclick="verificar()">Verificar y Mostrar Ticket</button>
+<header>
+  <h1>🎓 Sistema de Tickets de Lectura 2025</h1>
+  <p>Universidad | Proyecto Académico</p>
+</header>
 
-<div id="ticket" class="ticket">
-  <h2>🎟️ Ticket de Lectura</h2>
-  <p id="nombreEstudiante"></p>
-  <p id="codigoUnico"></p>
-  <p>«Leer te abre caminos» 📖✨</p>
-  <button onclick="descargar()">Descargar Ticket</button>
+<div class="container">
+  <h2>📚 Bienvenido(a)</h2>
+  <p>Por favor sigue los pasos para descargar tu ticket:</p>
+
+  <div class="instrucciones">
+    <ol>
+      <li>Ingresa tu número de registro asignado.</li>
+      <li>Verifica tu identidad.</li>
+      <li>Descarga tu ticket como imagen 🎟️.</li>
+      <li>Recuerda: sólo puedes descargarlo <strong>una vez</strong> y hasta el <strong>29 de abril de 2025</strong>.</li>
+    </ol>
+  </div>
+
+  <input type="text" id="registro" placeholder="Ej: 225079951">
+  <br>
+  <button onclick="verificar()">Verificar y Mostrar Ticket</button>
+
+  <div id="ticket">
+    <h2>🎟️ Ticket de Lectura</h2>
+    <p id="nombreEstudiante"></p>
+    <p id="codigoUnico"></p>
+    <p>«Leer te abre caminos» 📖✨</p>
+  </div>
+
+  <button id="btnDescargar" onclick="descargar()" style="display:none; margin-top:20px;">Descargar Ticket como Imagen</button>
 </div>
+
+<footer>
+  © 2025 Daniel Hurtado Justiniano - Todos los derechos reservados
+</footer>
 
 <script>
 const estudiantes = {
@@ -75,29 +172,25 @@ function verificar() {
     document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + estudiantes[registro].nombre + "</strong>";
     document.getElementById("codigoUnico").innerHTML = "Código: <strong>" + estudiantes[registro].codigo + "</strong>";
     document.getElementById("ticket").style.display = "block";
+    document.getElementById("btnDescargar").style.display = "inline-block";
   }else{
-    alert("❌ Registro incorrecto. Por favor, verifique su número de registro.");
+    alert("❌ Registro incorrecto. Por favor, verifica tu número.");
     document.getElementById("ticket").style.display = "none";
+    document.getElementById("btnDescargar").style.display = "none";
   }
 }
 
 function descargar() {
   if (descargado) {
-    alert("⚠️ Ya has descargado tu ticket. Solo puedes descargarlo una vez.");
+    alert("⚠️ Solo puedes descargar el ticket una vez.");
     return;
   }
-
-  const registro = document.getElementById("registro").value.trim();
-  const estudiante = estudiantes[registro];
-
-  const contenido = `🎟️ Ticket de Lectura\n\nEstudiante: ${estudiante.nombre}\nCódigo: ${estudiante.codigo}\n\n«Leer te abre caminos» 📖✨`;
-
-  const blob = new Blob([contenido], {type: 'text/plain;charset=utf-8'});
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = `Ticket_${estudiante.nombre.replace(/\s+/g, "_")}.txt`;
-  link.click();
-
+  html2canvas(document.getElementById("ticket")).then(function(canvas) {
+    let link = document.createElement("a");
+    link.download = "Ticket_Lectura_2025.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
   descargado = true;
 }
 </script>
