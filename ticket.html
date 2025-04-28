@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket de Lectura 2025</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f0f4f8; display: flex; flex-direction: column; align-items: center; padding: 50px; }
+    input, button { padding: 10px; margin: 10px; font-size: 16px; }
+    .ticket {
+      display: none; background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+      width: 320px; text-align: center; margin-top: 30px;
+    }
+    .ticket h2, .ticket p { margin: 10px 0; }
+  </style>
+</head>
+<body>
+
+<h2>🎟️ Descarga tu Ticket de Lectura 2025</h2>
+<p>Ingresa tu número de registro asignado:</p>
+<input type="text" id="registro" placeholder="Ej: 225079951">
+<br>
+<button onclick="verificar()">Verificar y Mostrar Ticket</button>
+
+<div id="ticket" class="ticket">
+  <h2>🎟️ Ticket de Lectura</h2>
+  <p id="nombreEstudiante"></p>
+  <p id="codigoUnico"></p>
+  <p>«Leer te abre caminos» 📖✨</p>
+  <button onclick="descargar()">Descargar Ticket</button>
+</div>
+
+<script>
+const estudiantes = {
+  "225079951": {nombre: "Sergio Rodrigo Burcio Gonzales", codigo: "TICKET-LECTURA-2025-1"},
+  "22507070": {nombre: "Queysi Jahaziel Añez Aguilar", codigo: "TICKET-LECTURA-2025-2"},
+  "20018791": {nombre: "Jose Perez Ricaldes", codigo: "TICKET-LECTURA-2025-3"},
+  "225415832": {nombre: "Luz Marieli Arias Carrillo", codigo: "TICKET-LECTURA-2025-4"},
+  "225132486": {nombre: "Jher Mathias Gorena Hurtado", codigo: "TICKET-LECTURA-2025-5"},
+  "225133221": {nombre: "Hilda Arispe Gonzáles", codigo: "TICKET-LECTURA-2025-6"},
+  "225416650": {nombre: "Karla Paiss Ortiz Paz", codigo: "TICKET-LECTURA-2025-7"},
+  "225086621": {nombre: "Maria Belen Serna Claros", codigo: "TICKET-LECTURA-2025-8"},
+  "225136361": {nombre: "Nicol Adrianz Pacheco", codigo: "TICKET-LECTURA-2025-9"},
+  "225135323": {nombre: "Eva Maria Medina Melgar", codigo: "TICKET-LECTURA-2025-10"},
+  "225082799": {nombre: "Sarai Michel Gutierrez Ubano", codigo: "TICKET-LECTURA-2025-11"},
+  "225085661": {nombre: "Julio Daniel Rivera", codigo: "TICKET-LECTURA-2025-12"},
+  "225136810": {nombre: "Bruno Cadima", codigo: "TICKET-LECTURA-2025-13"},
+  "225084274": {nombre: "Fabian Montecinos Rioja", codigo: "TICKET-LECTURA-2025-14"},
+  "225167960": {nombre: "Mady Rico Sanchez", codigo: "TICKET-LECTURA-2025-15"},
+  "225154641": {nombre: "Luis Miguel Pasteur Ortega", codigo: "TICKET-LECTURA-2025-16"},
+  "22516944": {nombre: "Sara Valverde Llanos", codigo: "TICKET-LECTURA-2025-17"},
+  "22515980": {nombre: "Mauricio Cespedes Acosta", codigo: "TICKET-LECTURA-2025-18"},
+  "225132699": {nombre: "Jose Miguel Perez Arteaga", codigo: "TICKET-LECTURA-2025-19"},
+  "225085321": {nombre: "Luis Ramiro Quiroga Zanga", codigo: "TICKET-LECTURA-2025-20"},
+  "219132429": {nombre: "Mariana Martins Bejarano", codigo: "TICKET-LECTURA-2025-21"},
+  "220076091": {nombre: "Alejandro Elias Paz Roda", codigo: "TICKET-LECTURA-2025-22"},
+  "22416316": {nombre: "Reinaldo Hurtado Saria", codigo: "TICKET-LECTURA-2025-23"},
+  "7696852": {nombre: "Daniel Hurtado Justiniano", codigo: "TICKET-LECTURA-2025-24"}
+};
+
+let descargado = false;
+
+function verificar() {
+  const registro = document.getElementById("registro").value.trim();
+  const fechaActual = new Date();
+  const fechaLimite = new Date('2025-04-29T23:59:59');
+
+  if (fechaActual > fechaLimite) {
+    alert("⛔ El plazo para descargar el ticket ha expirado.");
+    return;
+  }
+
+  if(estudiantes[registro]){
+    document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + estudiantes[registro].nombre + "</strong>";
+    document.getElementById("codigoUnico").innerHTML = "Código: <strong>" + estudiantes[registro].codigo + "</strong>";
+    document.getElementById("ticket").style.display = "block";
+  }else{
+    alert("❌ Registro incorrecto. Por favor, verifique su número de registro.");
+    document.getElementById("ticket").style.display = "none";
+  }
+}
+
+function descargar() {
+  if (descargado) {
+    alert("⚠️ Ya has descargado tu ticket. Solo puedes descargarlo una vez.");
+    return;
+  }
+
+  const registro = document.getElementById("registro").value.trim();
+  const estudiante = estudiantes[registro];
+
+  const contenido = `🎟️ Ticket de Lectura\n\nEstudiante: ${estudiante.nombre}\nCódigo: ${estudiante.codigo}\n\n«Leer te abre caminos» 📖✨`;
+
+  const blob = new Blob([contenido], {type: 'text/plain;charset=utf-8'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `Ticket_${estudiante.nombre.replace(/\s+/g, "_")}.txt`;
+  link.click();
+
+  descargado = true;
+}
+</script>
+
+</body>
+</html>
