@@ -125,17 +125,17 @@ const estudiantes = {
   "225132486": {nombre: "Jher Mathias Gorena Hurtado"},
   "225132321": {nombre: "Hilda Arispe Gonzáles"},
   "225416650": {nombre: "Karla Paiss Ortiz Paz"},
-  "225086621": {nombre: "Maria Belen Serna Claros"},
+  "225086621": {nombre: "Julio Daniel Rivera"},
   "225136361": {nombre: "Nicol Adrianz Pacheco"},
   "225135323": {nombre: "Eva Maria Medina Melgar"},
   "225082799": {nombre: "Sarai Michel Gutierrez Ubano"},
-  "225085661": {nombre: "Julio Daniel Rivera"},
   "225136810": {nombre: "Bruno Cadima"},
   "225084274": {nombre: "Fabian Montecinos Rioja"},
   "225167960": {nombre: "Mady Rico Sanchez"},
   "225154641": {nombre: "Luis Miguel Pasteur Ortega"},
   "22516944": {nombre: "Sara Valverde Llanos"},
   "22515980": {nombre: "Mauricio Cespedes Acosta"},
+  "225099999": {nombre: "Josue Castedo"}, // Reemplaza por su código real si lo tienes
   "225132699": {nombre: "Jose Miguel Perez Arteaga"},
   "225085321": {nombre: "Luis Ramiro Quiroga Zanga"},
   "219132429": {nombre: "Mariana Martins Bejarano"},
@@ -143,14 +143,6 @@ const estudiantes = {
   "22416316": {nombre: "Reinaldo Hurtado Saria"},
   "7696852": {nombre: "Daniel Hurtado Justiniano"},
   "11304518": {nombre: "Jennifer Arredondo Villagómez"},
-  "225132532": {nombre: "Eva Maria Medina Melgar"},
-  "225132970": {nombre: "Queysi Añez"},
-  "225086621": {nombre: "Maria Belen Serna Claros"},
-  "225416650": {nombre: "Karla Paiss Ortiz Paz"},
-  "225132631": {nombre: "Nicol Adrianz Pacheco"},
-  "225133221": {nombre: "Hilda Arispe Gonzáles"},
-  "225132486": {nombre: "Jher Mathias Gorena Hurtado"},
-  "225143832": {nombre: "Luz Marieli Arias Carrillo"},
   "225143657": {nombre: "Tiary Anyelina Mendoza Gamez"},
   "225116316": {nombre: "Reinaldo Hurtado Soria"},
   "225132850": {nombre: "Michelle Ado Franco"},
@@ -162,50 +154,66 @@ const estudiantes = {
   "73837137": {nombre: "William Villanueva"}
 };
 
-let descargados = {};
+const limitesDescarga = {
+  "22516944": 5, // Sara Llanos
+  "22515980": 1, // Mauricio Cespedes
+  "225115964": 3, // Josue Castedo
+  "225085569": 2  // Julio Daniel Rivera
+};
+
+let registrosDescargados = {};
 
 function verificar() {
   let registro = document.getElementById("registro").value.trim();
-  let base = registro.replace(/[ab]$/, '');
+  let base = registro.replace(/[abcde]$/, '');
+  let intento = registro.length > base.length ? registro.charCodeAt(registro.length - 1) - 96 : 1;
 
-  if (estudiantes[base]) {
-    let fechaHoy = new Date();
-    let dia = String(fechaHoy.getDate()).padStart(2, '0');
-    let mes = String(fechaHoy.getMonth() + 1).padStart(2, '0');
-    let año = fechaHoy.getFullYear();
-    let fechaFormateada = `${dia}/${mes}/${año}`;
-
-    let intento = 1;
-    if (registro.endsWith('a')) intento = 2;
-    else if (registro.endsWith('b')) intento = 3;
-
-    if (intento > 3) {
-      alert("⛔ Solo puedes descargar tres tickets.");
-      return;
-    }
-
-    if (!descargados[registro]) {
-      document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + estudiantes[base].nombre + "</strong>";
-      document.getElementById("codigoUnico").innerHTML = "Registro: <strong>" + base + "</strong>";
-      document.getElementById("fechaParticipacion").innerHTML = "🎯 Participación - " + fechaFormateada + " (Intento " + intento + ")";
-      document.getElementById("ticket").style.display = "block";
-      document.getElementById("btnDescargar").style.display = "inline-block";
-    } else {
-      alert("⚠️ Este ticket ya fue descargado.");
-      document.getElementById("ticket").style.display = "none";
-      document.getElementById("btnDescargar").style.display = "none";
-    }
-  } else {
+  if (!estudiantes[base]) {
     alert("❌ Registro incorrecto. Verifica tu número.");
-    document.getElementById("ticket").style.display = "none";
-    document.getElementById("btnDescargar").style.display = "none";
+    ocultarTicket();
+    return;
   }
+
+  const nombre = estudiantes[base].nombre;
+  const limite = limitesDescarga[base] || 0;
+
+  if (intento > limite) {
+    if (limite === 0) {
+      alert(`🙌 Hola ${nombre}. Aún no puedes descargar tickets esta vez. ¡Participa más activamente en la próxima clase y los ganarás!`);
+    } else {
+      alert(`⛔ ${nombre}, ya descargaste tus ${limite} ticket(s).`);
+    }
+    ocultarTicket();
+    return;
+  }
+
+  let fechaHoy = new Date();
+  let dia = String(fechaHoy.getDate()).padStart(2, '0');
+  let mes = String(fechaHoy.getMonth() + 1).padStart(2, '0');
+  let año = fechaHoy.getFullYear();
+  let fechaFormateada = `${dia}/${mes}/${año}`;
+
+  if (!registrosDescargados[registro]) {
+    document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + nombre + "</strong>";
+    document.getElementById("codigoUnico").innerHTML = "Registro: <strong>" + base + "</strong>";
+    document.getElementById("fechaParticipacion").innerHTML = "🎯 Participación - " + fechaFormateada + " (Intento " + intento + ")";
+    document.getElementById("ticket").style.display = "block";
+    document.getElementById("btnDescargar").style.display = "inline-block";
+  } else {
+    alert("⚠️ Ya descargaste este intento.");
+    ocultarTicket();
+  }
+}
+
+function ocultarTicket() {
+  document.getElementById("ticket").style.display = "none";
+  document.getElementById("btnDescargar").style.display = "none";
 }
 
 function descargar() {
   let registro = document.getElementById("registro").value.trim();
-  if (descargados[registro]) {
-    alert("⚠️ Ya descargaste este ticket.");
+  if (registrosDescargados[registro]) {
+    alert("⚠️ Ya descargaste este intento.");
     return;
   }
   html2canvas(document.getElementById("ticket")).then(function(canvas) {
@@ -213,7 +221,7 @@ function descargar() {
     link.download = "Ticket_Participacion_2025.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
-    descargados[registro] = true;
+    registrosDescargados[registro] = true;
   });
 }
 </script>
