@@ -58,24 +58,11 @@
       text-align: center;
       box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     }
-    #ticket h2 {
-      margin-top: 0;
-      font-size: 24px;
-    }
-    #ticket p {
-      margin: 10px 0;
-      font-size: 16px;
-    }
     footer {
       margin-top: 50px;
       font-size: 12px;
       color: #666;
       text-align: center;
-    }
-    .instrucciones {
-      text-align: left;
-      font-size: 14px;
-      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -88,16 +75,9 @@
 
 <div class="container">
   <h2>🎯 Bienvenido(a)</h2>
-  <p>Por favor sigue los pasos para descargar tu ticket de participación:</p>
-
-  <div class="instrucciones">
-    <ol>
-      <li>Ingresa tu número de registro asignado.</li>
-    </ol>
-  </div>
+  <p>Ingresa tu número de registro asignado:</p>
 
   <input type="text" id="registro" placeholder="Ej: 225079951">
-  <br>
   <button onclick="verificar()">Verificar y Mostrar Ticket</button>
 
   <div id="ticket">
@@ -108,7 +88,7 @@
     <p>«Tu participación fortalece el conocimiento» 📚✨</p>
   </div>
 
-  <button id="btnDescargar" onclick="descargar()" style="display:none; margin-top:20px;">Descargar Ticket como Imagen</button>
+  <button id="btnDescargar" onclick="descargar()" style="display:none;">Descargar Ticket como Imagen</button>
 </div>
 
 <footer>
@@ -116,54 +96,22 @@
 </footer>
 
 <script>
-const estudiantes = {
-  "225079951": {nombre: "Sergio Rodrigo Burcio Gonzales"},
-  "22507070": {nombre: "Queysi Jahaziel Añez Aguilar"},
-  "20018791": {nombre: "Jose Perez Ricaldes"},
-  "225415832": {nombre: "Luz Marieli Arias Carrillo"},
-  "225132486": {nombre: "Jher Mathias Gorena Hurtado"},
-  "225132321": {nombre: "Hilda Arispe Gonzáles"},
-  "225416650": {nombre: "Karla Paiss Ortiz Paz"},
-  "225086621": {nombre: "Julio Daniel Rivera"},
-  "225136361": {nombre: "Nicol Adrianz Pacheco"},
-  "225135323": {nombre: "Eva Maria Medina Melgar"},
-  "225082799": {nombre: "Sarai Michel Gutierrez Ubano"},
-  "225136810": {nombre: "Bruno Cadima"},
-  "225084274": {nombre: "Fabian Montecinos Rioja"},
-  "225167960": {nombre: "Mady Rico Sanchez"},
-  "225154641": {nombre: "Luis Miguel Pasteur Ortega"},
-  "22516944": {nombre: "Sara Valverde Llanos"},
-  "22515980": {nombre: "Mauricio Cespedes Acosta"},
-  "225099999": {nombre: "Josue Castedo"}, // reemplaza si tienes su código real
-  "225132699": {nombre: "Jose Miguel Perez Arteaga"},
-  "225085321": {nombre: "Luis Ramiro Quiroga Zanga"},
-  "219132429": {nombre: "Mariana Martins Bejarano"},
-  "220076091": {nombre: "Alejandro Elias Paz Roda"},
-  "22416316": {nombre: "Reinaldo Hurtado Saria"},
-  "7696852": {nombre: "Daniel Hurtado Justiniano"},
-  "11304518": {nombre: "Jennifer Arredondo Villagómez"},
-  "225143657": {nombre: "Tiary Anyelina Mendoza Gamez"},
-  "225116316": {nombre: "Reinaldo Hurtado Soria"},
-  "225132850": {nombre: "Michelle Ado Franco"},
-  "220379926": {nombre: "Yusena Mishel Aquino Tórrez"},
-  "225087192": {nombre: "Adriana Michel Vargas Sandoval"},
-  "225085192": {nombre: "Fernando Cuéllar Sustiniano"},
-  "225116855": {nombre: "William Villanueva Calle"},
-  "225167940": {nombre: "David Soliz Eloroz"},
-  "73837137": {nombre: "William Villanueva"}
-};
+const estudiantes = { /* mismo objeto estudiantes aquí */ };
 
-const limitesDescarga = {
-  "22516944": 5, // Sara Llanos
-  "22515980": 1, // Mauricio Cespedes
-  "225099999": 3, // Josue Castedo
-  "225086621": 2, // Julio Daniel Rivera
-  "7696852": 2   // Daniel Hurtado Justiniano
-};
-
+const LIMITE_DESCARGAS = 3;
 let registrosDescargados = {};
 
 function verificar() {
+  const horaActual = new Date();
+  const horaInicio = new Date(); horaInicio.setHours(19, 45, 0);
+  const horaFin = new Date(); horaFin.setHours(21, 30, 0);
+
+  if (horaActual < horaInicio || horaActual > horaFin) {
+    alert("⏰ Solo puedes descargar tickets entre las 19:45 y las 21:30.");
+    ocultarTicket();
+    return;
+  }
+
   const registro = document.getElementById("registro").value.trim();
   if (!estudiantes[registro]) {
     alert("❌ Registro incorrecto. Verifica tu número.");
@@ -171,29 +119,20 @@ function verificar() {
     return;
   }
 
-  const nombre = estudiantes[registro].nombre;
-  const limite = limitesDescarga[registro] || 0;
   const descargados = registrosDescargados[registro] || 0;
 
-  if (descargados >= limite) {
-    if (limite === 0) {
-      alert(`🙌 Hola ${nombre}. Aún no puedes descargar tickets esta vez. ¡Participa más activamente en la próxima clase y los ganarás!`);
-    } else {
-      alert(`⛔ ${nombre}, ya descargaste tus ${limite} ticket(s).`);
-    }
+  if (descargados >= LIMITE_DESCARGAS) {
+    alert(`⛔ Has alcanzado el límite de ${LIMITE_DESCARGAS} tickets hoy.`);
     ocultarTicket();
     return;
   }
 
-  let fechaHoy = new Date();
-  let dia = String(fechaHoy.getDate()).padStart(2, '0');
-  let mes = String(fechaHoy.getMonth() + 1).padStart(2, '0');
-  let año = fechaHoy.getFullYear();
-  let fechaFormateada = `${dia}/${mes}/${año}`;
+  const nombre = estudiantes[registro].nombre;
+  const fechaFormateada = horaActual.toLocaleDateString();
 
-  document.getElementById("nombreEstudiante").innerHTML = "Estudiante: <strong>" + nombre + "</strong>";
-  document.getElementById("codigoUnico").innerHTML = "Registro: <strong>" + registro + "</strong>";
-  document.getElementById("fechaParticipacion").innerHTML = "🎯 Participación - " + fechaFormateada + " (Intento " + (descargados + 1) + ")";
+  document.getElementById("nombreEstudiante").innerHTML = `Estudiante: <strong>${nombre}</strong>`;
+  document.getElementById("codigoUnico").innerHTML = `Registro: <strong>${registro}</strong>`;
+  document.getElementById("fechaParticipacion").innerHTML = `🎯 Participación - ${fechaFormateada} (Intento ${descargados + 1})`;
   document.getElementById("ticket").style.display = "block";
   document.getElementById("btnDescargar").style.display = "inline-block";
 }
@@ -205,27 +144,16 @@ function ocultarTicket() {
 
 function descargar() {
   const registro = document.getElementById("registro").value.trim();
-  if (!estudiantes[registro]) return;
-
-  const descargados = registrosDescargados[registro] || 0;
-  const limite = limitesDescarga[registro] || 0;
-
-  if (descargados >= limite) {
-    alert("⛔ Límite alcanzado.");
-    return;
-  }
-
-  html2canvas(document.getElementById("ticket")).then(function(canvas) {
+  html2canvas(document.getElementById("ticket")).then(canvas => {
     let link = document.createElement("a");
     link.download = "Ticket_Participacion_2025.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
-    registrosDescargados[registro] = descargados + 1;
+    registrosDescargados[registro] = (registrosDescargados[registro] || 0) + 1;
     ocultarTicket();
-    alert(`✅ Ticket ${descargados + 1} de ${limite} descargado con éxito.`);
+    alert(`✅ Ticket descargado (${registrosDescargados[registro]} de ${LIMITE_DESCARGAS}).`);
   });
 }
 </script>
-
 </body>
 </html>
