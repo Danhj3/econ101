@@ -128,7 +128,7 @@ let registrosDescargados = {};
 function verificar() {
   const horaActual = new Date();
   const horaInicio = new Date(); horaInicio.setHours(19, 45, 0);
-  const horaFin = new Date(); horaFin.setHours(23, 30, 0);
+  const horaFin = new Date(); horaFin.setHours(23, 59, 0);
 
   if (horaActual < horaInicio || horaActual > horaFin) {
     alert("⏰ Solo puedes descargar tickets entre las 19:45 y las 23:30.");
