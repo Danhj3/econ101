@@ -121,17 +121,16 @@ const estudiantes = {
   "225081792": {nombre: "Luis Fernando Cuellar Justiniano"}
 };
 
-
-const LIMITE_DESCARGAS = 5;
+const LIMITE_DESCARGAS = 10;
 let registrosDescargados = {};
 
 function verificar() {
   const horaActual = new Date();
   const horaInicio = new Date(); horaInicio.setHours(19, 45, 0);
-  const horaFin = new Date(); horaFin.setHours(23, 59, 0);
+  const horaFin = new Date(); horaFin.setHours(21, 0, 0);
 
   if (horaActual < horaInicio || horaActual > horaFin) {
-    alert("⏰ Solo puedes descargar tickets entre las 19:45 y las 23:30.");
+    alert("⏰ Solo puedes descargar tickets entre las 19:45 y las 21:00.");
     ocultarTicket();
     return;
   }
