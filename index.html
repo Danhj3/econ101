@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONG Salud Mental | Clínica Política</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            accent: '#0ea5e9',
+            ink: '#0f172a'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="relative overflow-hidden bg-ink">
+    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1600&q=80" alt="Red de personas" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent"></div>
+    <nav class="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-white">
+      <div class="flex items-center gap-3">
+        <img class="h-12 w-12 rounded-full border border-white/20 object-cover" src="https://images.unsplash.com/photo-1500099817043-86d46000d58f?auto=format&fit=crop&w=200&q=60" alt="Logo ONG" />
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-sky-200">ONG Salud Mental</p>
+          <p class="text-lg font-semibold">Clínica Política y Bienestar</p>
+        </div>
+      </div>
+      <div class="hidden items-center gap-6 text-sm font-semibold md:flex">
+        <a href="#misiones" class="hover:text-sky-200">Visión y misión</a>
+        <a href="#clinica" class="hover:text-sky-200">Clínica política</a>
+        <a href="#evaluaciones" class="hover:text-sky-200">Evaluaciones</a>
+        <a href="#biblioteca" class="hover:text-sky-200">Biblioteca</a>
+        <a href="#contacto" class="rounded-full bg-sky-500 px-4 py-2 text-ink shadow-lg shadow-sky-900/40 hover:bg-white">Contacto</a>
+      </div>
+    </nav>
+    <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-6 pb-16 pt-8 md:grid-cols-2 md:pt-14">
+      <div class="space-y-6 text-white">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-100 ring-1 ring-white/20">
+          Salud mental + Política pública
+        </div>
+        <h1 class="text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
+          Construimos una ciudadanía emocionalmente resiliente y políticamente responsable.
+        </h1>
+        <p class="text-lg text-sky-100/90">Acompañamos a líderes, comunidades y servidores públicos con evaluación psicológica, educación cívica y protocolos basados en evidencia para prevenir la manipulación emocional.</p>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a href="#programas" class="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-ink shadow-lg shadow-sky-900/40 transition hover:-translate-y-0.5 hover:bg-white">Explorar programas</a>
+          <a href="#clinica" class="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white">Descubrir clínica política</a>
+        </div>
+      </div>
+      <div class="rounded-3xl bg-white/5 p-6 backdrop-blur md:p-8">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl bg-white/10 p-4 text-white ring-1 ring-white/15">
+            <p class="text-sm text-sky-100">Evaluaciones aplicadas</p>
+            <p class="text-3xl font-bold">+240</p>
+            <p class="text-xs text-sky-200">Perfilamiento ético y de personalidad en líderes.</p>
+          </div>
+          <div class="rounded-2xl bg-white/10 p-4 text-white ring-1 ring-white/15">
+            <p class="text-sm text-sky-100">Protocolos clínicos</p>
+            <p class="text-3xl font-bold">12</p>
+            <p class="text-xs text-sky-200">Prevención de falacias y propaganda psicológica.</p>
+          </div>
+          <div class="rounded-2xl bg-white/10 p-4 text-white ring-1 ring-white/15 sm:col-span-2">
+            <p class="text-sm text-sky-100">Red de apoyo</p>
+            <p class="text-lg font-semibold">Psicología, trabajo social y ciencia política</p>
+            <p class="text-xs text-sky-200">Desde comunidades rurales hasta parlamentos juveniles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl space-y-20 px-6 py-16">
+    <section id="misiones" class="grid gap-10 rounded-3xl bg-white p-8 shadow-xl shadow-slate-200/80 md:grid-cols-2">
+      <div class="space-y-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.15em] text-primary">Nuestra razón de ser</p>
+        <h2 class="text-3xl font-bold text-ink">Visión y misión con propósito</h2>
+        <p class="text-slate-700">Creamos una organización no gubernamental dedicada a la salud mental con foco en la alfabetización cívica. Promovemos bienestar psicológico, prevención de violencia, y decisión pública responsable.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/60 p-4">
+            <p class="text-sm font-semibold text-ink">Visión</p>
+            <p class="text-sm text-slate-700">Ser referentes en salud mental comunitaria y clínica política para democracias saludables.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/60 p-4">
+            <p class="text-sm font-semibold text-ink">Misión</p>
+            <p class="text-sm text-slate-700">Ofrecer acompañamiento clínico, educación emocional y herramientas anti-manipulación a ciudadanía y líderes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold text-ink">Valores</p>
+            <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">Ética</span>
+          </div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li>• Evidencia científica y derechos humanos</li>
+            <li>• Confidencialidad y consentimiento informado</li>
+            <li>• Inclusión cultural y enfoque de género</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold text-ink">Qué apoyamos</p>
+            <span class="rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">Acción</span>
+          </div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li>• Programas escolares de gestión emocional</li>
+            <li>• Observatorios ciudadanos y datos abiertos</li>
+            <li>• Protocolos de protección contra discurso de odio</li>
+          </ul>
+        </div>
+        <div class="sm:col-span-2 rounded-2xl border border-dashed border-slate-200 bg-gradient-to-r from-white to-slate-50 p-4">
+          <p class="text-sm font-semibold text-ink">Qué debemos hacer ahora</p>
+          <p class="text-sm text-slate-700">Implementar clínicas móviles, formar brigadas de apoyo psicosocial en crisis electorales y crear un repositorio abierto de falacias psicológicas con evidencia y ejemplos locales.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="programas" class="space-y-8">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.15em] text-primary">Programas</p>
+          <h2 class="text-3xl font-bold text-ink">Servicios con impacto directo</h2>
+          <p class="text-slate-700">Diseñamos rutas de acompañamiento integrales: desde la clínica política hasta la prevención comunitaria.</p>
+        </div>
+        <div class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-primary ring-1 ring-primary/20">Pestañas dinámicas</div>
+      </div>
+      <div class="overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-200/80 ring-1 ring-slate-100">
+        <div class="flex flex-wrap items-center border-b border-slate-100 bg-slate-50 text-sm font-semibold text-ink" id="tabs">
+          <button data-tab="tab-atencion" class="tab-btn border-b-2 border-primary px-5 py-3 text-primary">Atención clínica</button>
+          <button data-tab="tab-formacion" class="tab-btn px-5 py-3">Formación cívica</button>
+          <button data-tab="tab-incidencia" class="tab-btn px-5 py-3">Incidencia y datos</button>
+        </div>
+        <div class="space-y-6 p-6" id="tab-content">
+          <div id="tab-atencion" class="tab-panel grid gap-4 md:grid-cols-3">
+            <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-sky-50 to-white p-4">
+              <p class="text-sm font-semibold text-ink">Clínica política</p>
+              <p class="text-sm text-slate-700">Sesiones de higiene emocional para gabinetes, partidos y movimientos ciudadanos.</p>
+              <span class="mt-3 inline-flex w-max rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">Modalidad híbrida</span>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-emerald-50 to-white p-4">
+              <p class="text-sm font-semibold text-ink">Consulta comunitaria</p>
+              <p class="text-sm text-slate-700">Atención gratuita o diferenciada en barrios vulnerables y zonas rurales.</p>
+              <span class="mt-3 inline-flex w-max rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Red de 35 voluntarios</span>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-amber-50 to-white p-4">
+              <p class="text-sm font-semibold text-ink">Crisis y prevención</p>
+              <p class="text-sm text-slate-700">Protocolos de primeros auxilios psicológicos ante violencia política y desinformación.</p>
+              <span class="mt-3 inline-flex w-max rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">24/7</span>
+            </div>
+          </div>
+          <div id="tab-formacion" class="tab-panel hidden grid gap-4 md:grid-cols-3">
+            <div class="rounded-2xl border border-slate-100 bg-white p-4">
+              <p class="text-sm font-semibold text-ink">Escuela de ciudadanía emocional</p>
+              <p class="text-sm text-slate-700">Diplomados y bootcamps en comunicación no violenta, mediación y ética digital.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-white p-4">
+              <p class="text-sm font-semibold text-ink">Laboratorio de liderazgo</p>
+              <p class="text-sm text-slate-700">Mentorías basadas en fortalezas VIA y evaluaciones 360°.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-white p-4">
+              <p class="text-sm font-semibold text-ink">Campañas seguras</p>
+              <p class="text-sm text-slate-700">Guías para evitar falacias psicológicas y manipulación en campañas electorales.</p>
+            </div>
+          </div>
+          <div id="tab-incidencia" class="tab-panel hidden grid gap-4 md:grid-cols-3">
+            <div class="rounded-2xl border border-slate-100 bg-white p-4">
+              <p class="text-sm font-semibold text-ink">Observatorio psico-político</p>
+              <p class="text-sm text-slate-700">Analizamos discurso público, sesgos y violencia simbólica con datos abiertos.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-white p-4">
+              <p class="text-sm font-semibold text-ink">Mapa de riesgos</p>
+              <p class="text-sm text-slate-700">Cartografía de riesgos emocionales en campañas y políticas públicas.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-white p-4">
+              <p class="text-sm font-semibold text-ink">Incidencia legislativa</p>
+              <p class="text-sm text-slate-700">Propuestas de ley para protección de salud mental y combate a la desinformación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="clinica" class="grid gap-10 rounded-3xl bg-white p-8 shadow-xl shadow-slate-200/80 md:grid-cols-2">
+      <div class="space-y-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.15em] text-primary">Clínica política</p>
+        <h2 class="text-3xl font-bold text-ink">Evaluaciones y contención estratégica</h2>
+        <p class="text-slate-700">Evaluamos personalidad, ética y competencias socioemocionales de actores políticos para prevenir decisiones impulsivas y generar confianza ciudadana.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/60 p-4">
+            <p class="text-sm font-semibold text-ink">Herramientas</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Big Five + inventarios clínicos abreviados</li>
+              <li>• Entrevistas motivacionales</li>
+              <li>• Evaluación de riesgos psicosociales</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/60 p-4">
+            <p class="text-sm font-semibold text-ink">Entrega</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Informe confidencial y plan de soporte</li>
+              <li>• Simulaciones de crisis y vocería</li>
+              <li>• Coaching psicológico y ético</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="rounded-2xl border border-slate-100 bg-gradient-to-r from-white to-slate-50 p-4">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold text-ink">Falacias psicológicas frecuentes</p>
+            <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">Papel en mano</span>
+          </div>
+          <ul class="mt-3 space-y-3 text-sm text-slate-700">
+            <li><strong>Ad populum emocional:</strong> apela al miedo o la esperanza sin evidencia verificable.</li>
+            <li><strong>Falsa urgencia:</strong> obliga a decisiones inmediatas para evitar análisis crítico.</li>
+            <li><strong>Ad hominem terapéutico:</strong> desacredita la salud mental del oponente sin fundamento clínico.</li>
+            <li><strong>Falacia de la salvación individual:</strong> promete que una figura "curará" el sistema sin abordar estructuras.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-primary/20 bg-primary/5 p-4">
+          <p class="text-sm font-semibold text-primary">Kit de prevención en papel</p>
+          <p class="text-sm text-slate-700">Imprimimos fichas rápidas: señales de alerta, preguntas socráticas, checklist de verificación y ejercicios de grounding para equipos de campaña y ciudadanía.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="evaluaciones" class="space-y-8 rounded-3xl bg-white p-8 shadow-xl shadow-slate-200/80">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.15em] text-primary">Evaluaciones de personalidad</p>
+          <h2 class="text-3xl font-bold text-ink">Panel de seguimiento de líderes</h2>
+          <p class="text-slate-700">Buscador rápido para revisar categorías y recomendaciones personalizadas.</p>
+        </div>
+        <input id="searchInput" type="text" placeholder="Buscar por nombre, rol o riesgo" class="w-full max-w-sm rounded-full border border-slate-200 px-4 py-2 text-sm shadow-sm focus:border-primary focus:outline-none" />
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-200 text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold text-ink">Nombre</th>
+              <th class="px-4 py-3 text-left font-semibold text-ink">Rol</th>
+              <th class="px-4 py-3 text-left font-semibold text-ink">Hallazgo clave</th>
+              <th class="px-4 py-3 text-left font-semibold text-ink">Riesgo</th>
+              <th class="px-4 py-3 text-left font-semibold text-ink">Recomendación</th>
+            </tr>
+          </thead>
+          <tbody id="evaluacionesTable" class="divide-y divide-slate-100">
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-ink">María del Sol</td>
+              <td class="px-4 py-3 text-slate-700">Gobernadora</td>
+              <td class="px-4 py-3 text-slate-700">Apertura alta, necesita límites claros en agenda.</td>
+              <td class="px-4 py-3"><span class="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700">Medio</span></td>
+              <td class="px-4 py-3 text-slate-700">Sesiones de regulación emocional y priorización.</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-ink">Luis Andrade</td>
+              <td class="px-4 py-3 text-slate-700">Diputado</td>
+              <td class="px-4 py-3 text-slate-700">Tendencia a pensamiento dicotómico.</td>
+              <td class="px-4 py-3"><span class="rounded-full bg-rose-100 px-2.5 py-1 text-xs font-semibold text-rose-700">Alto</span></td>
+              <td class="px-4 py-3 text-slate-700">Psicoeducación en sesgos y entrenamiento en negociación.</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-ink">Comité Joven Horizonte</td>
+              <td class="px-4 py-3 text-slate-700">Movimiento estudiantil</td>
+              <td class="px-4 py-3 text-slate-700">Gran cohesión, pero riesgo de burnout organizacional.</td>
+              <td class="px-4 py-3"><span class="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700">Medio</span></td>
+              <td class="px-4 py-3 text-slate-700">Rotación de vocerías y espacios de descanso guiado.</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-ink">Red Municipal</td>
+              <td class="px-4 py-3 text-slate-700">Alcaldías</td>
+              <td class="px-4 py-3 text-slate-700">Alta impulsividad en crisis mediáticas.</td>
+              <td class="px-4 py-3"><span class="rounded-full bg-orange-100 px-2.5 py-1 text-xs font-semibold text-orange-700">Moderado</span></td>
+              <td class="px-4 py-3 text-slate-700">Entrenamiento en portavocía y respiración diafragmática.</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-ink">Equipo Aurora</td>
+              <td class="px-4 py-3 text-slate-700">Partido emergente</td>
+              <td class="px-4 py-3 text-slate-700">Orientación colectiva, necesita diversificar liderazgos.</td>
+              <td class="px-4 py-3"><span class="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-700">Bajo</span></td>
+              <td class="px-4 py-3 text-slate-700">Plan de sucesión y grupos de supervisión clínica.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="biblioteca" class="grid gap-8 rounded-3xl bg-white p-8 shadow-xl shadow-slate-200/80 md:grid-cols-2">
+      <div class="space-y-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.15em] text-primary">Biblioteca viva</p>
+        <h2 class="text-3xl font-bold text-ink">Libros, autores y recursos clave</h2>
+        <p class="text-slate-700">Basamos nuestro trabajo en evidencia científica y fuentes abiertas para la ciudadanía.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/60 p-4">
+            <p class="text-sm font-semibold text-ink">Autores</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Daniel Kahneman – sesgos cognitivos</li>
+              <li>• Martha Nussbaum – justicia y emociones</li>
+              <li>• Steven Pinker – lenguaje político</li>
+              <li>• Brené Brown – vulnerabilidad y liderazgo</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/60 p-4">
+            <p class="text-sm font-semibold text-ink">Publicaciones abiertas</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• OMS: Plan de Acción en Salud Mental</li>
+              <li>• UNESCO: Alfabetización mediática</li>
+              <li>• BID: Violencia política y género</li>
+              <li>• APA: Guías de ética profesional</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-3xl bg-gradient-to-br from-sky-50 to-white p-6 ring-1 ring-slate-100">
+        <p class="text-sm font-semibold text-ink">Tabla de consulta rápida</p>
+        <div class="mt-4 overflow-x-auto text-sm">
+          <table class="min-w-full divide-y divide-slate-200">
+            <thead class="bg-slate-100 text-ink">
+              <tr>
+                <th class="px-3 py-2 text-left font-semibold">Fuente</th>
+                <th class="px-3 py-2 text-left font-semibold">Tema</th>
+                <th class="px-3 py-2 text-left font-semibold">Aplicación</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="px-3 py-2 font-semibold text-ink">"Pensar rápido, pensar despacio"</td>
+                <td class="px-3 py-2 text-slate-700">Sesgos y decisiones</td>
+                <td class="px-3 py-2 text-slate-700">Talleres de pensamiento crítico para votantes.</td>
+              </tr>
+              <tr>
+                <td class="px-3 py-2 font-semibold text-ink">"Emociones políticas"</td>
+                <td class="px-3 py-2 text-slate-700">Afectos y democracia</td>
+                <td class="px-3 py-2 text-slate-700">Guías para vocerías empáticas.</td>
+              </tr>
+              <tr>
+                <td class="px-3 py-2 font-semibold text-ink">OMS & OPS</td>
+                <td class="px-3 py-2 text-slate-700">Salud mental comunitaria</td>
+                <td class="px-3 py-2 text-slate-700">Clínicas móviles y psicoeducación rural.</td>
+              </tr>
+              <tr>
+                <td class="px-3 py-2 font-semibold text-ink">UNICEF</td>
+                <td class="px-3 py-2 text-slate-700">Protección infantil</td>
+                <td class="px-3 py-2 text-slate-700">Protocolos escolares anti-bullying.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="grid gap-8 rounded-3xl bg-ink px-8 py-10 text-white shadow-xl shadow-ink/30 md:grid-cols-2">
+      <div class="space-y-3">
+        <p class="text-sm font-semibold uppercase tracking-[0.15em] text-sky-200">Contacto</p>
+        <h2 class="text-3xl font-bold">Conversemos y diseñemos tu estrategia</h2>
+        <p class="text-sky-100">Escríbenos para alianzas, evaluaciones de liderazgo o para llevar nuestras clínicas móviles a tu territorio.</p>
+        <div class="space-y-2 text-sm text-sky-100">
+          <p>📍 América Latina, oficinas móviles y remotas</p>
+          <p>📞 +591 700-000-000</p>
+          <p>✉️ contacto@clinicamental.org</p>
+        </div>
+      </div>
+      <form class="space-y-4">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <input type="text" placeholder="Nombre" class="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-sky-200 focus:border-white focus:outline-none" />
+          <input type="email" placeholder="Correo" class="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-sky-200 focus:border-white focus:outline-none" />
+        </div>
+        <input type="text" placeholder="Organización / rol" class="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-sky-200 focus:border-white focus:outline-none" />
+        <textarea rows="4" placeholder="Cuéntanos qué necesitas" class="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-sky-200 focus:border-white focus:outline-none"></textarea>
+        <button type="button" class="w-full rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-lg shadow-slate-900/30 transition hover:-translate-y-0.5">Programar llamada</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-8 text-sm text-slate-600">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="font-semibold text-ink">ONG Salud Mental y Clínica Política</p>
+        <p>Promovemos decisiones públicas con integridad emocional.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-500">
+        <span class="rounded-full bg-slate-100 px-3 py-1">Licencias abiertas</span>
+        <span class="rounded-full bg-slate-100 px-3 py-1">Protección de datos</span>
+        <span class="rounded-full bg-slate-100 px-3 py-1">Transparencia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('border-b-2', 'border-primary', 'text-primary'));
+        tabPanels.forEach(panel => panel.classList.add('hidden'));
+        btn.classList.add('border-b-2', 'border-primary', 'text-primary');
+        const target = document.getElementById(btn.dataset.tab);
+        if (target) target.classList.remove('hidden');
+      });
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const rows = document.querySelectorAll('#evaluacionesTable tr');
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.toLowerCase();
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.classList.toggle('hidden', !text.includes(term));
+      });
+    });
+  </script>
+</body>
+</html>
