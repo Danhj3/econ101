@@ -1,1 +1,4 @@
-(()=>{const b=document.querySelector('.menu-toggle'),n=document.querySelector('.nav');if(b&&n){b.addEventListener('click',()=>n.classList.toggle('open'));}document.querySelectorAll('[data-year]').forEach(y=>y.textContent=new Date().getFullYear());})();
+(function(){
+  const year=document.querySelector('[data-year]');
+  if(year) year.textContent=new Date().getFullYear();
+})();
